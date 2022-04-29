@@ -10,20 +10,21 @@ import SwiftUI
 import MapKit
 
 
-class LocationHelper:NSObject, ObservableObject, CLLocationManagerDelegate {
+class LocationHelper: NSObject, ObservableObject, CLLocationManagerDelegate {
     
-    
-    
+    @Published var coordinates: MKCoordinateRegion = MKCoordinateRegion(
+        center: CLLocationCoordinate2D(latitude: 48.8588897, longitude: 2.320041),
+        span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
     
     var manager = CLLocationManager()
-    var span: MKCoordinateSpan
-    @Published var coordinates:MKCoordinateRegion
+    
     var lastLocation: CLLocation?
     
+    var span: MKCoordinateSpan
     
     init(_ location: CLLocation){
-        span = MKCoordinateSpan(latitudeDelta: 0.06, longitudeDelta: 0.06)
-        coordinates = MKCoordinateRegion(center: location.coordinate,span: span)
+        span = MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
+        coordinates = MKCoordinateRegion(center: location.coordinate, span: span)
         super.init()
         manager.delegate = self
         start()
@@ -36,14 +37,13 @@ class LocationHelper:NSObject, ObservableObject, CLLocationManagerDelegate {
         manager.startUpdatingLocation()
     }
     
-    
     // 3 méthodes à implémenter pour la gestion du gps
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch manager.authorizationStatus {
-        case .authorizedAlways: print("toujours autorisé")
-        case .authorizedWhenInUse: print("seulement authorisé quand l'application tourner")
-        case .denied: print("je n'autorise pas ")
-        case .notDetermined: print("Not Determined")
+        case .authorizedAlways: print("toujours autoriser")
+        case .authorizedWhenInUse: print("seulement authorisée quand l'application fonctionne")
+        case .denied: print("je n'autorise pas la localisation")
+        case .notDetermined: print("Localisation non déterminée")
         case .restricted:print("Vous n'avez pas autorisé l'application à accéder à votre localisation. Allez dans réglages pour activer votre position.")
             @unknown default: break
             
@@ -58,14 +58,17 @@ class LocationHelper:NSObject, ObservableObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print(locations)
         if let lastLocation = locations.last {
-            recentrer(newLocation: lastLocation)
+            withAnimation {
+                recentrer(newLocation: lastLocation)
+            }
         }
-        
     }
     
-    func recentrer(newLocation : CLLocation){
+    func recentrer(newLocation : CLLocation) {
         lastLocation = newLocation
-        coordinates = MKCoordinateRegion(center: newLocation.coordinate,span: span)
+        coordinates = MKCoordinateRegion(
+            center: newLocation.coordinate,
+            span: span)
     }
     
 }

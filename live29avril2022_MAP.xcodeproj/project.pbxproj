@@ -55,9 +55,9 @@
 			children = (
 				899E2D1C281BE30400006D01 /* live29avril2022_MAPApp.swift */,
 				899E2D1E281BE30400006D01 /* ContentView.swift */,
+				899E2D2A281BE89300006D01 /* LocationHelper.swift */,
 				899E2D20281BE30600006D01 /* Assets.xcassets */,
 				899E2D22281BE30600006D01 /* Preview Content */,
-				899E2D2A281BE89300006D01 /* LocationHelper.swift */,
 			);
 			path = live29avril2022_MAP;
 			sourceTree = "<group>";
