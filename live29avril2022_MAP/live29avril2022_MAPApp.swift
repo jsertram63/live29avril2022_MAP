@@ -14,6 +14,7 @@ struct live29avril2022_MAPApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(SitesViewModel())
         }
     }
 }

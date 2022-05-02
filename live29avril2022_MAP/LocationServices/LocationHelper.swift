@@ -10,7 +10,7 @@ import SwiftUI
 import MapKit
 
 
-class LocationHelper: NSObject, ObservableObject, CLLocationManagerDelegate {
+class LocationHelper: NSObject, ObservableObject, CLLocationManagerDelegate, Identifiable {
     
     @Published var coordinates: MKCoordinateRegion = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 48.8588897, longitude: 2.320041),
@@ -19,17 +19,14 @@ class LocationHelper: NSObject, ObservableObject, CLLocationManagerDelegate {
     var manager = CLLocationManager()
     
     var lastLocation: CLLocation?
-    
     var span: MKCoordinateSpan
     
     init(_ location: CLLocation){
-        span = MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
+        span = MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
         coordinates = MKCoordinateRegion(center: location.coordinate, span: span)
         super.init()
         manager.delegate = self
         start()
-        
-        
     }
     
     func start() {
@@ -44,16 +41,14 @@ class LocationHelper: NSObject, ObservableObject, CLLocationManagerDelegate {
         case .authorizedWhenInUse: print("seulement authorisée quand l'application fonctionne")
         case .denied: print("je n'autorise pas la localisation")
         case .notDetermined: print("Localisation non déterminée")
-        case .restricted:print("Vous n'avez pas autorisé l'application à accéder à votre localisation. Allez dans réglages pour activer votre position.")
+        case .restricted: print("Vous n'avez pas autorisé l'application à accéder à votre localisation. Allez dans réglages pour activer votre position.")
             @unknown default: break
-            
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error.localizedDescription)
     }
-    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print(locations)
@@ -70,5 +65,4 @@ class LocationHelper: NSObject, ObservableObject, CLLocationManagerDelegate {
             center: newLocation.coordinate,
             span: span)
     }
-    
 }
