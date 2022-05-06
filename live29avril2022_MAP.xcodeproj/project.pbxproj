@@ -14,6 +14,7 @@
 		899E2D21281BE30600006D01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 899E2D20281BE30600006D01 /* Assets.xcassets */; };
 		899E2D24281BE30600006D01 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 899E2D23281BE30600006D01 /* Preview Assets.xcassets */; };
 		899E2D2B281BE89300006D01 /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899E2D2A281BE89300006D01 /* LocationHelper.swift */; };
+		899E2D2D282520BB00006D01 /* Datas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899E2D2C282520BB00006D01 /* Datas.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		899E2D20281BE30600006D01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		899E2D23281BE30600006D01 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		899E2D2A281BE89300006D01 /* LocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
+		899E2D2C282520BB00006D01 /* Datas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Datas.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				37981A4628201D9100FE5129 /* SitesModel.swift */,
+				899E2D2C282520BB00006D01 /* Datas.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37981A4728201D9100FE5129 /* SitesModel.swift in Sources */,
+				899E2D2D282520BB00006D01 /* Datas.swift in Sources */,
 				37981A4928201FCC00FE5129 /* SitesModelView.swift in Sources */,
 				899E2D2B281BE89300006D01 /* LocationHelper.swift in Sources */,
 				899E2D1F281BE30400006D01 /* ContentView.swift in Sources */,

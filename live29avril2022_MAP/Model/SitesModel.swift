@@ -14,7 +14,14 @@ struct SitesModel: Identifiable {
     let latitude: Double
     let longitude: Double
     
+    /*
     var coordinate: CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }*/
+    
+    func coordinate() -> CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
+    
+    
 }
